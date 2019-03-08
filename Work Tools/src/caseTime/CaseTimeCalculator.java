@@ -30,14 +30,14 @@ public class CaseTimeCalculator {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	protected String ShiftStartHour;
-	protected String ShiftStartMinute;
-	protected int ShiftStartAmPm;
-	protected String CurrentTimeHour;
-	protected String CurrentTimeMinute;
-	protected int CurrentTimeAmPm;
-	protected String AccruedTimeHours;
-	protected String AccruedTimeMinutes;
+	protected String shiftStartHour;
+	protected String shiftStartMinute;
+	protected int shiftStartAmPm;
+	protected String currentTimeHour;
+	protected String currentTimeMinute;
+	protected int currentTimeAmPm;
+	protected String accruedTimeHours;
+	protected String accruedTimeMinutes;
 
 	/**
 	 * Launch the application.
@@ -239,31 +239,38 @@ public class CaseTimeCalculator {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				//To-Do
-				ShiftStartHour  = textField_2.getText();
-				ShiftStartMinute = textField_3.getText();
-				ShiftStartAmPm = comboBox_2.getSelectedIndex();
-				if (ShiftStartAmPm == 0)
+				shiftStartHour  = textField_2.getText();
+				shiftStartMinute = textField_3.getText();
+				shiftStartAmPm = comboBox_2.getSelectedIndex();
+				if (shiftStartAmPm == 0)
 				{
-					System.out.println(ShiftStartAmPm);
+					System.out.println(shiftStartAmPm);
 				}
-				else if (ShiftStartAmPm == 1)
+				else if (shiftStartAmPm == 1)
 				{
-					System.out.println(ShiftStartAmPm);
+					System.out.println(shiftStartAmPm);
 				}
-				CurrentTimeHour = textField_4.getText();
-				CurrentTimeMinute = textField_5.getText();
-				CurrentTimeAmPm = comboBoxAmPm.getSelectedIndex();
-				AccruedTimeHours = textField_6.getText();
-				AccruedTimeMinutes = textField_7.getText();
+				currentTimeHour = textField_4.getText();
+				currentTimeMinute = textField_5.getText();
+				currentTimeAmPm = comboBoxAmPm.getSelectedIndex();
+				accruedTimeHours = textField_6.getText();
+				accruedTimeMinutes = textField_7.getText();
 				//Todo: Perform calculation
-				System.out.println("CurrentTimeHour: " + CurrentTimeHour);
-				System.out.println("CurrentTimeMinute: " + CurrentTimeMinute);
-				System.out.println("CurrentTimeAmPm: " + CurrentTimeAmPm);
+				System.out.println("StartTimeHour: " + shiftStartHour);
+				System.out.println("StartTimeMinute: " + shiftStartMinute);
+				System.out.println("StartTimeAmPm: " + shiftStartAmPm);
+				
+				System.out.println("CurrentTimeHour: " + currentTimeHour);
+				System.out.println("CurrentTimeMinute: " + currentTimeMinute);
+				System.out.println("CurrentTimeAmPm: " + currentTimeAmPm);
+				
+				System.out.println("accruedTimeHours: " + accruedTimeHours);
+				System.out.println("accruedTimeMinutes: " + accruedTimeMinutes);
 				
 				
 				//
-				textField.setText("");
-				textField_1.setText("");
+				textField.setText("test");
+				textField_1.setText("test");
 				
 			}
 
