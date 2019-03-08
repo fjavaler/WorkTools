@@ -16,12 +16,28 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CaseTimeCalculator {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	protected String ShiftStartHour;
+	protected String ShiftStartMinute;
+	protected int ShiftStartAmPm;
+	protected String CurrentTimeHour;
+	protected String CurrentTimeMinute;
+	protected int CurrentTimeAmPm;
+	protected String AccruedTimeHours;
+	protected String AccruedTimeMinutes;
 
 	/**
 	 * Launch the application.
@@ -97,25 +113,15 @@ public class CaseTimeCalculator {
 		lblWhatTimeDid.setBounds(10, 36, 344, 14);
 		panel.add(lblWhatTimeDid);
 		
-		JComboBox<Integer[]> comboBox = new JComboBox(hours);
-		comboBox.setBackground(SystemColor.activeCaption);
-		comboBox.setBounds(96, 54, 40, 30);
-		panel.add(comboBox);
-		
-		JComboBox<Integer[]> comboBox_1 = new JComboBox(minutes);
-		comboBox_1.setBackground(SystemColor.activeCaption);
-		comboBox_1.setBounds(165, 54, 40, 30);
-		panel.add(comboBox_1);
-		
 		JComboBox comboBox_2 = new JComboBox(amPmString);
 		comboBox_2.setBackground(SystemColor.activeCaption);
-		comboBox_2.setBounds(235, 54, 50, 30);
+		comboBox_2.setBounds(235, 59, 50, 20);
 		panel.add(comboBox_2);
 		
 		JLabel label = new JLabel("Hour");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.WHITE);
-		label.setBounds(96, 82, 39, 14);
+		label.setBounds(90, 82, 39, 14);
 		panel.add(label);
 		
 		JLabel label_1 = new JLabel("Minutes");
@@ -129,6 +135,16 @@ public class CaseTimeCalculator {
 		lblAmpm_1.setForeground(Color.WHITE);
 		lblAmpm_1.setBounds(235, 82, 46, 14);
 		panel.add(lblAmpm_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(85, 59, 50, 20);
+		panel.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(157, 59, 50, 20);
+		panel.add(textField_3);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
@@ -146,35 +162,35 @@ public class CaseTimeCalculator {
 		JLabel lblHours_1 = new JLabel("Hour");
 		lblHours_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHours_1.setForeground(Color.WHITE);
-		lblHours_1.setBounds(95, 54, 40, 14);
+		lblHours_1.setBounds(85, 52, 50, 14);
 		panel_1.add(lblHours_1);
 		
 		JLabel lblMinutes_1 = new JLabel("Minutes");
 		lblMinutes_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMinutes_1.setForeground(Color.WHITE);
-		lblMinutes_1.setBounds(162, 54, 45, 14);
+		lblMinutes_1.setBounds(157, 52, 50, 14);
 		panel_1.add(lblMinutes_1);
-		
-		JComboBox comboBoxHours = new JComboBox(hours);
-		comboBoxHours.setBackground(SystemColor.activeCaption);
-		comboBoxHours.setBounds(96, 26, 40, 30);
-		panel_1.add(comboBoxHours);
-		
-		JComboBox comboBoxMinutes = new JComboBox(minutes);
-		comboBoxMinutes.setBackground(SystemColor.activeCaption);
-		comboBoxMinutes.setBounds(165, 26, 40, 30);
-		panel_1.add(comboBoxMinutes);
 		
 		JComboBox comboBoxAmPm = new JComboBox(amPmString);
 		comboBoxAmPm.setBackground(SystemColor.activeCaption);
-		comboBoxAmPm.setBounds(235, 26, 50, 30);
+		comboBoxAmPm.setBounds(235, 26, 50, 20);
 		panel_1.add(comboBoxAmPm);
 		
 		JLabel lblAmpm = new JLabel("AM/PM");
 		lblAmpm.setForeground(new Color(255, 255, 255));
 		lblAmpm.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAmpm.setBounds(235, 54, 46, 14);
+		lblAmpm.setBounds(235, 52, 50, 14);
 		panel_1.add(lblAmpm);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(85, 26, 50, 20);
+		panel_1.add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(157, 26, 50, 20);
+		panel_1.add(textField_5);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.BLACK);
@@ -192,24 +208,24 @@ public class CaseTimeCalculator {
 		JLabel lblHours = new JLabel("Hours");
 		lblHours.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHours.setForeground(Color.WHITE);
-		lblHours.setBounds(113, 52, 58, 14);
+		lblHours.setBounds(120, 52, 50, 14);
 		panel_2.add(lblHours);
 		
 		JLabel lblMinutes = new JLabel("Minutes");
 		lblMinutes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMinutes.setForeground(Color.WHITE);
-		lblMinutes.setBounds(188, 52, 58, 14);
+		lblMinutes.setBounds(196, 52, 50, 14);
 		panel_2.add(lblMinutes);
 		
-		JComboBox comboBoxHours2 = new JComboBox(hours);
-		comboBoxHours2.setBackground(SystemColor.activeCaption);
-		comboBoxHours2.setBounds(122, 23, 40, 30);
-		panel_2.add(comboBoxHours2);
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(120, 24, 50, 20);
+		panel_2.add(textField_6);
 		
-		JComboBox comboBoxMinutes2 = new JComboBox(minutes);
-		comboBoxMinutes2.setBackground(SystemColor.activeCaption);
-		comboBoxMinutes2.setBounds(196, 23, 40, 30);
-		panel_2.add(comboBoxMinutes2);
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(195, 24, 50, 20);
+		panel_2.add(textField_7);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.BLACK);
@@ -218,6 +234,41 @@ public class CaseTimeCalculator {
 		panel_3.setLayout(null);
 		
 		JButton btnCalculate = new JButton("Calculate");
+		btnCalculate.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				//To-Do
+				ShiftStartHour  = textField_2.getText();
+				ShiftStartMinute = textField_3.getText();
+				ShiftStartAmPm = comboBox_2.getSelectedIndex();
+				if (ShiftStartAmPm == 0)
+				{
+					System.out.println(ShiftStartAmPm);
+				}
+				else if (ShiftStartAmPm == 1)
+				{
+					System.out.println(ShiftStartAmPm);
+				}
+				CurrentTimeHour = textField_4.getText();
+				CurrentTimeMinute = textField_5.getText();
+				CurrentTimeAmPm = comboBoxAmPm.getSelectedIndex();
+				AccruedTimeHours = textField_6.getText();
+				AccruedTimeMinutes = textField_7.getText();
+				//Todo: Perform calculation
+				System.out.println("CurrentTimeHour: " + CurrentTimeHour);
+				System.out.println("CurrentTimeMinute: " + CurrentTimeMinute);
+				System.out.println("CurrentTimeAmPm: " + CurrentTimeAmPm);
+				
+				
+				//
+				textField.setText("");
+				textField_1.setText("");
+				
+			}
+
+			
+		});
 		btnCalculate.setBackground(new Color(220, 20, 60));
 		btnCalculate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCalculate.setBounds(137, 6, 89, 30);
